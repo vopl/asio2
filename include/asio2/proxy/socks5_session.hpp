@@ -145,7 +145,10 @@ namespace asio2::detail
 
 			if (s5_server_handshake_op.cmd == socks5::command::connect)
 			{
-				auto back_client = std::make_shared<asio2::socks5_tcp_transfer>(this->io_);
+				auto back_client = std::make_shared<asio2::socks5_tcp_transfer>(
+					this->derived().buffer().pre_size(),
+					max_buffer_size,
+					this->io_);
 
 			#if defined(ASIO2_SOCKS5_BIND_LOCAL_ENDPOINT)
 				back_client->bind_init([session_ptr, pback_client = back_client.get()]() mutable
