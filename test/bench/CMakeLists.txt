@@ -8,6 +8,10 @@
 # (See accompanying file LICENSE or see <http://www.gnu.org/licenses/>)
 #
 
+cmake_minimum_required(VERSION 3.11)
+
+include(${CMAKE_CURRENT_SOURCE_DIR}/cmake/configure.cmake)
+
 add_subdirectory (kcp)
 add_subdirectory (rpc)
 add_subdirectory (tcp)

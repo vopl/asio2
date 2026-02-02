@@ -64,9 +64,9 @@ void http3_test()
 		server.support_websocket(true);
 
 		// set the root directory, here is:  /asio2/example/wwwroot
-		std::filesystem::path root = std::filesystem::current_path()
-			.parent_path().parent_path()
-			.append("example").append("wwwroot");
+		std::filesystem::path root = std::filesystem::current_path(); // /asio2/build/test/unit/Debug
+		root = root.parent_path().parent_path().parent_path().parent_path();
+		root = root.append("example").append("wwwroot");
 		server.set_root_directory(std::move(root));
 
 		server.bind_recv([&](http::web_request& req, http::web_response& rep)

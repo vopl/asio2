@@ -8,6 +8,8 @@
 # (See accompanying file LICENSE or see <http://www.gnu.org/licenses/>)
 #
 
+cmake_minimum_required(VERSION 3.11)
+
 add_subdirectory (asio2_kcp_rpc_qps_client)
 add_subdirectory (asio2_kcp_rpc_qps_server)
 

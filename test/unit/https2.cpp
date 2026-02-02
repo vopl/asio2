@@ -49,17 +49,17 @@ void https2_test()
 		server.support_websocket(true);
 
 		// set the root directory, here is:  /asio2/example/wwwroot
-		std::filesystem::path root = std::filesystem::current_path()
-			.parent_path().parent_path()
-			.append("example").append("wwwroot");
+		std::filesystem::path root = std::filesystem::current_path(); // /asio2/build/test/unit/Debug
+		root = root.parent_path().parent_path().parent_path().parent_path();
+		root = root.append("example").append("wwwroot");
 		server.set_root_directory(std::move(root));
 
 		server.set_cert_file(
-			"../../example/cert/ca.crt",
-			"../../example/cert/server.crt",
-			"../../example/cert/server.key",
+			"../../../../example/cert/ca.crt",
+			"../../../../example/cert/server.crt",
+			"../../../../example/cert/server.key",
 			"123456");
-		server.set_dh_file("../../example/cert/dh1024.pem");
+		server.set_dh_file("../../../../example/cert/dh1024.pem");
 
 		server.bind_accept([](std::shared_ptr<asio2::https_session> & session_ptr)
 		{
@@ -137,9 +137,9 @@ void https2_test()
 
 		//https_client.set_verify_mode(asio::ssl::verify_peer);
 		https_client.set_cert_file(
-			"../../example/cert/ca.crt",
-			"../../example/cert/client.crt",
-			"../../example/cert/client.key",
+			"../../../../example/cert/ca.crt",
+			"../../../../example/cert/client.crt",
+			"../../../../example/cert/client.key",
 			"123456");
 
 		https_client.set_connect_timeout(std::chrono::seconds(10));
@@ -168,9 +168,9 @@ void https2_test()
 
 		wss_client.set_verify_mode(asio::ssl::verify_peer);
 		wss_client.set_cert_file(
-			"../../example/cert/ca.crt",
-			"../../example/cert/client.crt",
-			"../../example/cert/client.key",
+			"../../../../example/cert/ca.crt",
+			"../../../../example/cert/client.crt",
+			"../../../../example/cert/client.key",
 			"123456");
 
 		wss_client.bind_init([&]()

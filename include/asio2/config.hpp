@@ -21,8 +21,10 @@
 // boost::asio is not supported for version 2.6 and 2.7.
 // But at version 2.8, it supports both asio standalone and boost::asio.
 
-// define this to use asio standalone and beast standalone, otherwise use boost::asio and boost::beast.
+// define ASIO2_HEADER_ONLY to use asio standalone and beast standalone, otherwise use boost::asio and boost::beast.
+#ifndef ASIO2_DISABLE_HEADER_ONLY
 #define ASIO2_HEADER_ONLY
+#endif
 
 // If you want to use the ssl, you need to define ASIO2_ENABLE_SSL.
 // When use ssl,on windows need linker "libssl.lib;libcrypto.lib;Crypt32.lib;", on 
@@ -35,7 +37,7 @@
 //#define ASIO2_USE_WEBSOCKET_RPC
 
 // Whether to detect the validity of UTF8 string of mqtt
-#define ASIO2_CHECK_UTF8
+//#define ASIO2_CHECK_UTF8
 
 // Whether called the timer callback when the timer is awaked with some error.
 // eg : stop_timer will awake the timer with error of asio::error::operation_aborted.
