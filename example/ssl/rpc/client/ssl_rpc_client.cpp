@@ -20,9 +20,9 @@ int main()
 	//------------------------------------------------------------------------------
 	//client.set_verify_mode(asio::ssl::verify_peer);
 	//client.set_cert_file(
-	//	"../../example/cert/ca.crt",
-	//	"../../example/cert/client.crt",
-	//	"../../example/cert/client.key",
+	//	"../../../../../../example/cert/ca.crt",
+	//	"../../../../../../example/cert/client.crt",
+	//	"../../../../../../example/cert/client.key",
 	//	"123456");
 
 	client.bind_connect([&]()

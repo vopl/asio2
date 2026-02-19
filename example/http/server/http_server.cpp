@@ -45,11 +45,13 @@ int main()
 
 	server.support_websocket(true);
 
-	// root = /asio2/bin/x64
+	// root = /asio2/build/example/http/server/Debug
 	std::filesystem::path root = std::filesystem::current_path();
 
+	root = root.parent_path().parent_path().parent_path().parent_path().parent_path();
+
 	// root = /asio2/example/wwwroot
-	root = root.parent_path().parent_path().append("example/wwwroot");
+	root = root.append("example/wwwroot");
 
 	// set the http server root directory
 	server.set_root_directory(std::move(root));

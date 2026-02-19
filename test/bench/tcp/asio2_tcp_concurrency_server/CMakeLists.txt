@@ -8,12 +8,7 @@
 # (See accompanying file LICENSE or see <http://www.gnu.org/licenses/>)
 #
 
-#GroupSources (include/asio2 "/")
-#GroupSources (3rd/asio "/")
-
-aux_source_directory(. SRC_FILES)
-
-source_group("" FILES ${SRC_FILES})
+cmake_minimum_required (VERSION 3.11)
 
 set(PROJECT_NAME asio2_tcp_concurrency_server)
 set(TARGET_NAME bench_${PROJECT_NAME})
@@ -23,13 +18,6 @@ add_executable (
     ${PROJECT_NAME}.cpp
 )
 
-set_property(TARGET ${TARGET_NAME} PROPERTY FOLDER "test/bench/tcp")
+target_include_directories(${TARGET_NAME} PRIVATE ${ASIO2_ROOT_DIR}/asio)
 
-#SET_TARGET_PROPERTIES(${TARGET_NAME} PROPERTIES RUNTIME_OUTPUT_DIRECTORY ${ASIO2_EXES_DIR})
-
-set_target_properties(${TARGET_NAME} PROPERTIES VS_DEBUGGER_WORKING_DIRECTORY ${ASIO2_EXES_DIR})
-
-target_link_libraries(${TARGET_NAME} ${CMAKE_THREAD_LIBS_INIT})
-target_link_libraries(${TARGET_NAME} ${GENERAL_LIBS})
-
-include_directories (${ASIO2_ROOT_DIR}/asio)
+configure(${TARGET_NAME})
